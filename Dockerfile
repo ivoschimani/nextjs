@@ -7,7 +7,9 @@ RUN apk add --no-cache \
     make \
     g++
 
+# Allow any runtime UID/GID to write here (set via docker-compose user:)
 WORKDIR /app
+RUN chmod 777 /app
 
 # Entrypoint script handles install + build + start
 COPY entrypoint.sh /entrypoint.sh
